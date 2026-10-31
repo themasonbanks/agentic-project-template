@@ -51,7 +51,7 @@ def main():
         spaced.write_text(valid)
         source.write_text(valid.replace("Hello,", "Wrong,"))
         regression = run(["pnpm", "check"], project, False)
-        assert "greets a named person" in regression, regression
+        assert "<failure" in (project / "test-results/unit.xml").read_text(), regression
         source.write_text(valid)
         run(["pnpm", "check"], project)
         print("PASS: real Lefthook commit rejection, staged-only content, spaces, preserved edits, full-check test regression and repair")
