@@ -6,3 +6,7 @@
 .terraform/
 *.tfvars
 !*.tfvars.example
+
+node_modules/
+dist/
+__pycache__/
