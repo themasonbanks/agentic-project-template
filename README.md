@@ -1,7 +1,7 @@
 # Agentic project template
 
 A language-neutral starting point for independently managed application repositories.
-Status: local scaffold for KEB-118; not yet published or proven by adoption.
+Status: published private scaffold for KEB-118; fresh-project adoption is not yet proven.
 
 ## Adopt (target: under 30 minutes)
 
@@ -21,7 +21,7 @@ For Stockpot retain Bun, Biome, Turbo and its separate disposable Supabase job; 
 - sh scripts/check.sh: local project checks after dependencies are installed.
 - sh scripts/ci.sh: setup followed by project checks in a fresh hosted environment.
 
-The included CI runs checks from this repository. After the shared platform is published and validated, it can call the platform reusable workflow pinned to a reviewed commit SHA. See docs/architecture.md.
+The included CI calls the shared platform workflow pinned to a commit SHA; it runs checks from this repository. Owner-scoped private workflow access is enabled. See docs/architecture.md.
 
 ## Follow-on work
 

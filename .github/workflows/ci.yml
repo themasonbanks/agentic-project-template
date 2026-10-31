@@ -11,10 +11,4 @@ concurrency:
 jobs:
   quality:
     name: Project checks
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          persist-credentials: false
-      - run: sh scripts/ci.sh
+    uses: themasonbanks/agentic-platform/.github/workflows/project-checks.yml@85791b3f7e02156e480718756e33b2e28c4a7017
