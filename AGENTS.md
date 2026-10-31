@@ -9,3 +9,5 @@
 - Request independent review of substantive changes. Autonomous review remediation is disabled until KEB-128 is implemented and verified; its eventual limit is three safe attempts, then escalation.
 - Keep implemented, tested, reviewed, merged and deployed states distinct. Do not mark Done while acceptance evidence is missing.
 - Handoff: outcome, changed files, criteria evidence, checks, remaining limitations and rollback.
+
+- Code comments describe what the code beneath does. Put ticket references, decision rationale and implementation history in documentation or PR descriptions.

@@ -16,6 +16,7 @@ Use the PR template to connect implementation to issue criteria and document rol
 Separate implemented, tested, reviewed, merged, and deployed states. Do not mark a
 Linear issue Done while required evidence or integration remains outstanding.
 
-The CI workflow provides Project checks; applications may add database jobs. Making
+The reusable CI job appears as Project checks / Project checks on hosted runs; verify
+the exact status context on the adoption PR. Applications may add database jobs. Making
 these mandatory for merging requires repository branch-protection configuration;
 adding a workflow alone does not enforce that policy.
