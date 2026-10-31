@@ -1,11 +1,11 @@
 # Agentic project template
 
 A language-neutral starting point for independently managed application repositories.
-Status: published private scaffold for KEB-118; fresh-project adoption is not yet proven.
+Status: published private scaffold for KEB-118; hosted adoption is verified for a prepared POSIX shell sample; see docs/adoption-evidence.md for timing and limitations.
 
 ## Adopt (target: under 30 minutes)
 
-1. Use GitHub’s Use this template → Create a new repository. For a local copy, copy tracked files only; exclude .git, local environment files and credentials.
+1. Use GitHub’s Use this template → Create a new repository. Wait until the generated default branch contains its initial commit before cloning. For a local copy, copy tracked files only; exclude .git, local environment files and credentials.
 2. Record the runtime, pinned tool versions, lockfile and architecture in docs/architecture.md.
 3. Replace scripts/setup.sh and scripts/check.sh with actual project commands. Setup must install pinned tools and frozen dependencies; checks must validate formatting, lint, types, tests and build where applicable. Document exclusions with reasons.
 4. Run sh scripts/ci.sh. It deliberately fails until both adapters are configured.
