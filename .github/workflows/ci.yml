@@ -9,6 +9,18 @@ concurrency:
   group: project-ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  template_validation:
+    name: Template validation
+    if: github.repository == 'themasonbanks/agentic-project-template'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - run: python3 scripts/validate_template.py
+      - run: ruby -e 'require "yaml"; Dir.glob(".github/**/*.{yml,yaml}", File::FNM_DOTMATCH).push(".coderabbit.yaml").each { |path| YAML.load_file(path) }'
   quality:
     name: Project checks
+    if: github.repository != 'themasonbanks/agentic-project-template'
     uses: themasonbanks/agentic-platform/.github/workflows/project-checks.yml@85791b3f7e02156e480718756e33b2e28c4a7017

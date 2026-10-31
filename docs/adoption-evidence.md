@@ -26,3 +26,7 @@ Repository created at 21:02:37 UTC; repaired PR run completed at 21:06:09 UTC: 3
 GitHub template generation was asynchronous: an immediate clone saw the empty repository before its initial commit. Work was reapplied on a branch based on the finished generated main commit. Consumers should wait until the generated default branch is populated before cloning.
 
 No deployment, merge or production change occurred. The validation repository's branch rules, Linear linking and CodeRabbit configuration were not acceptance-tested; Stockpot integration evidence is tracked separately in KEB-117. Full security scanning, action upgrades, hooks and comprehensive CI remain follow-on work.
+
+## Template source validation correction
+
+The source template previously ran unconfigured application adapters and consequently failed CI. It now runs a dedicated Template validation job; generated applications continue running the shared application job and fail until configured. The earlier statement that source-template CI intentionally fails is superseded by this correction.

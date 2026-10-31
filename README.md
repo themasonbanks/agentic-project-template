@@ -28,3 +28,9 @@ The included CI calls the shared platform workflow pinned to a commit SHA; it ru
 KEB-119: fast hooks and adapters. KEB-120: complete hosted CI and failure evidence.
 KEB-121: security scanners and action pin maintenance. KEB-127: CodeRabbit review tuning.
 KEB-124/125: AWS/OIDC/Terraform and deployment. These are not implemented here.
+
+## Template repository CI
+
+This source repository runs Template validation: shell/YAML syntax, rejection of unconfigured application adapters, and runner success/error propagation. Run it locally with `python3 scripts/validate_template.py` and parse configuration YAML with Ruby's standard YAML library.
+
+Repository identity selects the job in .github/workflows/ci.yml. Every generated or forked application has a different repository name and runs the shared Project checks job instead. An unconfigured application still fails. If you rename or transfer the source template, update both repository comparisons. Application owners may remove the template-only job and validator during adoption.
