@@ -1,0 +1,8 @@
+# Review configuration only. Owner must verify app permissions and disable autofix in service settings.
+language: en-GB
+reviews:
+  profile: chill
+  request_changes_workflow: false
+  auto_review:
+    enabled: true
+    drafts: false
