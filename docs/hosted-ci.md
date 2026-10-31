@@ -1,6 +1,6 @@
 # Hosted checks
 
-Both branch pushes and pull requests run on hosted Ubuntu. The workflow groups push and PR runs by workflow, source repository and branch, cancelling older work in the same group. This reduces overlapping duplicate work; a second run that starts after the first finishes can still repeat checks. Fork branches with the same name use different source repository keys.
+Both branch pushes and pull requests run on hosted Ubuntu. The workflow groups runs by workflow, event type, source repository and branch, cancelling older work within that group. Push and PR runs are separate because PRs can have extra E2E coverage; a push must never cancel that coverage. Full local/unit checks may run for both events; expensive browser tests run only for PRs. Fork branches with the same name use different source repository keys.
 
 ## Stable required check
 
