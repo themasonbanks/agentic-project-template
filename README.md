@@ -34,3 +34,7 @@ KEB-124/125: AWS/OIDC/Terraform and deployment. These are not implemented here.
 This source repository runs Template validation: shell/YAML syntax, rejection of unconfigured application adapters, and runner success/error propagation. Run it locally with `python3 scripts/validate_template.py` and parse configuration YAML with Ruby's standard YAML library.
 
 Repository identity selects the job in .github/workflows/ci.yml. Every generated or forked application has a different repository name and runs the shared Project checks job instead. An unconfigured application still fails. If you rename or transfer the source template, update both repository comparisons. Application owners may remove the template-only job and validator during adoption.
+
+## Fast local feedback
+
+See [local checks and opt-in hooks](docs/local-checks.md) for the runnable pnpm/TypeScript adapter, existing Bun/Biome integration and non-Node fallback. Commit hooks inspect staged contents and are not security enforcement.
