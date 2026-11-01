@@ -3,6 +3,8 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * 1"
 permissions:
   contents: read
 concurrency:
@@ -42,18 +44,27 @@ jobs:
     name: Project checks
     if: github.repository != 'themasonbanks/agentic-project-template'
     uses: themasonbanks/agentic-platform/.github/workflows/project-checks.yml@07d41ba350e6b6586500b4c51a51a976d8046900
+  security:
+    uses: themasonbanks/agentic-platform/.github/workflows/security-checks.yml@7df9af6bee6cf0c722d59a54806d8cb3d3e01076
+    permissions:
+      contents: read
+      security-events: write
+    with:
+      verify-fixtures: ${{ github.repository == 'themasonbanks/agentic-project-template' }}
   ci:
     name: CI
     if: always()
-    needs: [template_validation, quality]
+    needs: [template_validation, quality, security]
     runs-on: ubuntu-latest
     timeout-minutes: 2
     env:
+      SECURITY_RESULT: ${{ needs.security.result }}
       TEMPLATE_RESULT: ${{ needs.template_validation.result }}
       PROJECT_RESULT: ${{ needs.quality.result }}
       SOURCE_REPOSITORY: ${{ github.repository }}
     steps:
       - run: |
+          test "$SECURITY_RESULT" = success
           if [ "$SOURCE_REPOSITORY" = themasonbanks/agentic-project-template ]; then
             test "$TEMPLATE_RESULT" = success
           else

@@ -6,7 +6,7 @@ Both branch pushes and pull requests run on hosted Ubuntu. The workflow groups r
 
 Require the `CI` status in an active default-branch ruleset with no bot bypass. It succeeds only when the selected source-template or application job succeeds; a skipped, failed or cancelled selected job fails the overall result. App job skips in the source repository and template job skips in consumers are expected. Use `CI`, not an optional job name, as the required check.
 
-GitHub currently returns HTTP 403 for ruleset management on these private template and validation repositories, stating that GitHub Pro or public visibility is required. No visibility or billing changes were made. CI exists but enforced merge blocking remains unverified/unavailable until the owner resolves plan access and configures the rule. Do not treat a passing workflow as branch protection.
+The platform, template and validation repositories are now public with active main rulesets requiring CI, up-to-date PRs and no bypass. A failing validation PR was confirmed BLOCKED, then CLEAN after repair. Private adopters still need a plan that supports protected branches; do not treat a passing workflow as branch protection.
 
 ## Application contract
 
@@ -24,4 +24,4 @@ Quality jobs have read-only contents permission, no persisted checkout credentia
 
 ## Verification
 
-Run python3 scripts/test_ci_runner.py locally to verify failure reporting, execution order and optional-stage gating. CI also runs the existing real-hook acceptance tests and template checks. Hosted acceptance must demonstrate broken/repair status and downloadable reports. Plan restrictions mean required-before-merge acceptance cannot currently be claimed for the private template/validation repositories.
+Run python3 scripts/test_ci_runner.py locally to verify failure reporting, execution order and optional-stage gating. CI also runs the existing real-hook acceptance tests and template checks. Hosted acceptance must demonstrate broken/repair status and downloadable reports. Required-before-merge enforcement was verified on the public validation repository; new adopters must configure and verify their own rules.

@@ -1,7 +1,7 @@
 # Agentic project template
 
 A language-neutral starting point for independently managed application repositories.
-Status: published private scaffold for KEB-118; hosted adoption is verified for a prepared POSIX shell sample; see docs/adoption-evidence.md for timing and limitations.
+Status: published public scaffold for KEB-118; hosted adoption is verified for a prepared POSIX shell sample; see docs/adoption-evidence.md for timing and limitations.
 
 ## Adopt (target: under 30 minutes)
 
@@ -42,3 +42,7 @@ See [local checks and opt-in hooks](docs/local-checks.md) for the runnable pnpm/
 ## Hosted CI
 
 See [hosted checks](docs/hosted-ci.md) for the stable CI result, saved reports, optional integration/E2E scripts, permissions and current branch-protection limits.
+
+## Security checks
+
+See [security checks and triage](docs/security-checks.md) for required scanners, safe detection tests, supported languages and narrow exceptions.
