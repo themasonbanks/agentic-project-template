@@ -30,7 +30,7 @@ jobs:
       - run: python3 scripts/test_ci_runner.py
       - run: python3 scripts/validate_template.py
       - run: ruby -e 'require "yaml"; Dir.glob(".github/**/*.{yml,yaml}", File::FNM_DOTMATCH).push(".coderabbit.yaml").each { |path| YAML.load_file(path) }'
-      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: ${{ !cancelled() }}
         with:
           name: template-reports-${{ github.run_id }}-${{ github.run_attempt }}
