@@ -45,7 +45,7 @@ jobs:
     if: github.repository != 'themasonbanks/agentic-project-template'
     uses: themasonbanks/agentic-platform/.github/workflows/project-checks.yml@07d41ba350e6b6586500b4c51a51a976d8046900
   security:
-    uses: themasonbanks/agentic-platform/.github/workflows/security-checks.yml@7df9af6bee6cf0c722d59a54806d8cb3d3e01076
+    uses: themasonbanks/agentic-platform/.github/workflows/security-checks.yml@ecd767d735a9ca0443567087470807a39b90714e
     permissions:
       contents: read
       security-events: write
