@@ -25,3 +25,7 @@ Quality jobs have read-only contents permission, no persisted checkout credentia
 ## Verification
 
 Run python3 scripts/test_ci_runner.py locally to verify failure reporting, execution order and optional-stage gating. CI also runs the existing real-hook acceptance tests and template checks. Hosted acceptance must demonstrate broken/repair status and downloadable reports. Required-before-merge enforcement was verified on the public validation repository; new adopters must configure and verify their own rules.
+
+## Enforcement evidence — 1 November 2026
+
+Active main rulesets were verified after public visibility: platform 26294540, template 26294545 and validation 26294548. Each requires GitHub Actions CI with no bypass actors. Temporary [validation PR #3](https://github.com/themasonbanks/agentic-harness-validation/pull/3) was BLOCKED at failing commit ea86d21 (PR run 41260536193), then CLEAN at repaired 9db84a2 (PR run 41260620770). It was closed without merging. This is enforcement evidence for these repositories; adopters must configure and verify their own rules.

@@ -33,7 +33,7 @@ def main():
         subprocess.run(["git", "config", "user.name", "Scanner fixture"], cwd=sample, check=True)
         subprocess.run(["git", "config", "user.email", "fixture@example.invalid"], cwd=sample, check=True)
         subprocess.run(["git", "add", "."], cwd=sample, check=True)
-        subprocess.run(["git", "commit", "-m", "Synthetic fixture " + fake], cwd=sample, check=True, capture_output=True)
+        subprocess.run(["git", "-c", "commit.gpgsign=false", "commit", "-m", "Synthetic fixture " + fake], cwd=sample, check=True, capture_output=True)
         history = root / "gitleaks-raw.json"
         scan(["gitleaks", "git", str(sample), "--redact", "--report-format", "json", "--report-path", str(history), "--no-banner"], history, 1)
         published = root / "published"
@@ -56,6 +56,18 @@ def main():
         command = ["trivy", "fs", "--scanners", "misconfig", "--severity", "HIGH,CRITICAL", "--exit-code", "1", "--format", "json", "--output", str(report), str(sample)]
         findings = scan(command, report, 1)
         assert any(v.get("Status") == "FAIL" for result in findings.get("Results", []) for v in result.get("Misconfigurations", []))
+        ignorefile = sample / ".trivyignore.yaml"
+        exceptions = [{"id": item.get("AVDID", item["ID"]), "paths": ["main.tf"],
+                       "statement": "Temporary fixture-only exception", "expired_at": "2099-01-01T00:00:00Z"}
+                      for result in findings.get("Results", []) for item in result.get("Misconfigurations", [])
+                      if item.get("Status") == "FAIL"]
+        ignorefile.write_text(json.dumps({"misconfigurations": exceptions}))
+        scan(command + ["--ignorefile", str(ignorefile)], report, 0)
+        for item in exceptions:
+            item["expired_at"] = "2000-01-01T00:00:00Z"
+        ignorefile.write_text(json.dumps({"misconfigurations": exceptions}))
+        scan(command + ["--ignorefile", str(ignorefile)], report, 1)
+        ignorefile.unlink()
         terraform.unlink()
         scan(command, report, 0)
         print("PASS: synthetic secret, vulnerable dependency and public SSH rule detected; clean repairs pass")
