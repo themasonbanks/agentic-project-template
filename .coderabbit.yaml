@@ -3,6 +3,20 @@ reviews:
   profile: chill
   request_changes_workflow: false
   post_merge_actions: []
+  finishing_touches:
+    docstrings:
+      enabled: false
+    unit_tests:
+      enabled: false
+    simplify:
+      enabled: false
+    autofix:
+      enabled: false
+    fix_ci:
+      enabled: false
+    resolve_merge_conflict:
+      enabled: false
+    custom: []
   path_filters:
     - "!**/node_modules/**"
     - "!**/dist/**"
