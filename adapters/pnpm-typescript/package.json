@@ -11,7 +11,7 @@
     "format:check": "prettier . --check",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
-    "test:unit": "node --test tests/*.test.mjs",
+    "test:unit": "mkdir -p test-results coverage && node --test --experimental-test-coverage --test-reporter=junit --test-reporter-destination=test-results/unit.xml --test-reporter=lcov --test-reporter-destination=coverage/lcov.info tests/*.test.mjs",
     "build": "tsc",
     "hooks:install": "lefthook install"
   },

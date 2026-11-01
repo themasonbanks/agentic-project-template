@@ -38,3 +38,7 @@ Repository identity selects the job in .github/workflows/ci.yml. Every generated
 ## Fast local feedback
 
 See [local checks and opt-in hooks](docs/local-checks.md) for the runnable pnpm/TypeScript adapter, existing Bun/Biome integration and non-Node fallback. Commit hooks inspect staged contents and are not security enforcement.
+
+## Hosted CI
+
+See [hosted checks](docs/hosted-ci.md) for the stable CI result, saved reports, optional integration/E2E scripts, permissions and current branch-protection limits.

@@ -10,3 +10,7 @@
 node_modules/
 dist/
 __pycache__/
+
+test-results/
+coverage/
+playwright-report/
