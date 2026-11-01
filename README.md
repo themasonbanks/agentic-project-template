@@ -1,7 +1,7 @@
 # Agentic project template
 
 A language-neutral starting point for independently managed application repositories.
-Status: published private scaffold for KEB-118; hosted adoption is verified for a prepared POSIX shell sample; see docs/adoption-evidence.md for timing and limitations.
+Status: published public scaffold for KEB-118; hosted adoption is verified for a prepared POSIX shell sample; see docs/adoption-evidence.md for timing and limitations.
 
 ## Adopt (target: under 30 minutes)
 
@@ -10,7 +10,7 @@ Status: published private scaffold for KEB-118; hosted adoption is verified for 
 3. Replace scripts/setup.sh and scripts/check.sh with actual project commands. Setup must install pinned tools and frozen dependencies; checks must validate formatting, lint, types, tests and build where applicable. Document exclusions with reasons.
 4. Run sh scripts/ci.sh. It deliberately fails until both adapters are configured.
 5. Commit a small change and verify CI runs on a branch push and a PR. Break a real check, confirm failure, repair it and confirm success.
-6. Have the owner approve GitHub/Linear/CodeRabbit access and enforce required checks with no bot bypass. Use the exact check name shown on the PR (currently Project checks / Project checks). For solo authors, require PRs and manual human merge but zero approving reviews: authors cannot approve their own PRs. Independent approval needs a second eligible human. Required checks alone do not enforce human-only merging; bot permissions must match that policy. Confirm enforcement on the repository plan.
+6. Have the owner approve GitHub/Linear/CodeRabbit access and enforce required checks with no bot bypass. Require the aggregate CI check; it covers both application and security validation. For solo authors, require PRs and manual human merge but zero approving reviews: authors cannot approve their own PRs. Independent approval needs a second eligible human. Required checks alone do not enforce human-only merging; bot permissions must match that policy. Confirm enforcement on the repository plan.
 7. Record elapsed setup time and evidence in docs/adoption-evidence.md.
 
 No database, Docker, cloud resources or application dependencies are installed by this template.
@@ -42,3 +42,7 @@ See [local checks and opt-in hooks](docs/local-checks.md) for the runnable pnpm/
 ## Hosted CI
 
 See [hosted checks](docs/hosted-ci.md) for the stable CI result, saved reports, optional integration/E2E scripts, permissions and current branch-protection limits.
+
+## Security checks
+
+See [security checks and triage](docs/security-checks.md) for required scanners, safe detection tests, supported languages and narrow exceptions.
