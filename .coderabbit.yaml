@@ -6,7 +6,8 @@ reviews:
   path_filters:
     - "!**/node_modules/**"
     - "!**/dist/**"
-    - "!**/coverage/**"
+    - "!coverage/**"
+    - "!adapters/pnpm-typescript/coverage/**"
     - "!**/test-results/**"
     - "!**/playwright-report/**"
   path_instructions:
@@ -18,7 +19,7 @@ reviews:
         Verify action refs against the upstream repository and distinguish tag objects from commit SHAs. Check least privilege, fork/untrusted input handling, credential exposure, stable required-check names and cancellation semantics. Cite applicable upstream evidence before claiming a ref or permission is invalid.
     - path: "**/*.py"
       instructions: |
-        Trace actual trust boundaries before reporting injection. Argument-array subprocess calls are not shell interpolation. Check failure propagation, report redaction and test coverage for meaningful failure cases.
+        Trace actual trust boundaries before reporting injection. Argument-array subprocess calls avoid shell interpolation only when shell=False and no explicit shell executable is invoked; check both before dismissing injection risks. Check failure propagation, report redaction and test coverage for meaningful failure cases.
   auto_review:
     enabled: true
     drafts: false
